@@ -1,18 +1,68 @@
-# 💫 About Me:
-🔭 I’m currently working on<br><br>Building production-grade cloud platforms on Azure — not toy demos.<br>I design enterprise architectures, implement DevSecOps pipelines, deploy with IaC, enforce security & governance, and take systems all the way to production sign-off.<br>If it touches CI/CD, cloud architecture, identity, or reliability — I own it end to end.<br>I don’t “support deployments.” I design systems that don’t break.<br><br>👯 I’m looking to collaborate on<br><br>Cloud & platform architecture<br>DevSecOps at scale<br>Kubernetes / AKS-based platforms<br>System design for real-world constraints<br>If your project is just tweaking YAML or babysitting pipelines, I’m not your guy.<br>If you’re solving hard problems with real trade-offs, we’ll get along.<br><br>🤝 I’m looking for help with<br><br>Pressure-testing my system design decisions against senior/principal-level expectations.<br>I’m interested in why architectures fail in production, not tutorial-level “best practices.”<br>If you’ve built or broken large systems — that’s the conversation.<br><br>🌱 I’m currently learning<br><br>Distributed system design & failure modes<br>Advanced Kubernetes internals (scaling, observability, resilience)<br>MLOps / AIOps foundations<br>Enterprise Architecture that actually works in practice (not slideware)<br>The goal isn’t more tools — it’s better architectural judgment.<br><br>💬 Ask me about<br><br>Designing secure Azure architectures from scratch<br>CI/CD strategy for Angular / React + .NET / Python<br>Microsoft Entra ID, SSO, App Proxy, identity flows<br>DevSecOps: Key Vault, policy, secrets, Sonar, governance<br>Translating Enterprise Architecture decisions into working systems<br>I bridge architecture theory and engineering reality.<br><br>⚡ Fun fact<br><br>I’ve:<br>Taken architectures through Enterprise Architecture review<br>Closed CISO security sign-offs<br>Shipped to production<br>And still been labeled “DevOps”
+# Portfolio (Next.js)
 
+Premium Azure Solutions Architect and DevOps portfolio built with Next.js, TypeScript, and Tailwind CSS.
 
-# 💻 Tech Stack:
-![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white) ![Codeberg](https://img.shields.io/badge/Codeberg-2185D0?style=for-the-badge&logo=Codeberg&logoColor=white) ![Datadog](https://img.shields.io/badge/datadog-%23632CA6.svg?style=for-the-badge&logo=datadog&logoColor=white) ![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white) ![OpenStack](https://img.shields.io/badge/Openstack-%23f01742.svg?style=for-the-badge&logo=openstack&logoColor=white) ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white) ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white) ![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-000?style=for-the-badge&logo=apachekafka) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white) ![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black) ![Jenkins](https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![Gunicorn](https://img.shields.io/badge/gunicorn-%298729.svg?style=for-the-badge&logo=gunicorn&logoColor=white) ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![CircleCI](https://img.shields.io/badge/circleci-%23161616.svg?style=for-the-badge&logo=circleci&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Mocha](https://img.shields.io/badge/-mocha-%238D6748?style=for-the-badge&logo=mocha&logoColor=white) ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white) ![Selenium](https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white) ![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white) ![SonarQube](https://img.shields.io/badge/SonarQube-black?style=for-the-badge&logo=sonarqube&logoColor=4E9BCD) ![Splunk](https://img.shields.io/badge/splunk-%23000000.svg?style=for-the-badge&logo=splunk&logoColor=white) ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white) ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Windows Terminal](https://img.shields.io/badge/Windows%20Terminal-%234D4D4D.svg?style=for-the-badge&logo=windows-terminal&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white) ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white) ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=ShivT-Cs&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
-![](https://nirzak-streak-stats.vercel.app/?user=ShivT-Cs&theme=dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=ShivT-Cs&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
+## Deployment target
 
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=ShivT-Cs&theme=radical&no-frame=false&no-bg=true&margin-w=4)
+- Hosting platform: Vercel
+- Package manager: npm (`package-lock.json` present)
+- Build command: `npm run build`
+- Output mode: standard Next.js server build (`next build`)
 
----
-[![](https://visitcount.itsvg.in/api?id=ShivT-Cs&icon=0&color=0)](https://visitcount.itsvg.in)
+## Local verification before deploy
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+Run these commands from the repository root:
+
+```bash
+npm ci
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
+
+Expected result: all commands succeed with no errors.
+
+## Vercel project settings
+
+- Framework preset: Next.js
+- Install command: `npm ci`
+- Build command: `npm run build`
+- Output directory: leave empty (Next.js default)
+- Node version: use the Vercel default compatible with Next.js 16
+
+## Environment variables and secrets
+
+This repository currently requires no secrets for build or runtime.
+
+Optional environment variable:
+
+- `NEXT_PUBLIC_SITE_URL`
+  - Purpose: canonical metadata, Open Graph URL, sitemap URLs, and robots sitemap URL.
+  - Example: `https://your-domain.example`
+  - If not set, the app auto-falls back to Vercel system variables (`VERCEL_PROJECT_PRODUCTION_URL`, then `VERCEL_URL`), then to `https://example.com`.
+
+Do not store credentials in source control. If future integrations require secrets, add them only in Vercel Project Settings.
+
+## Routes and static metadata endpoints
+
+Core routes:
+
+- `/`
+- `/projects/[slug]` generated from `content/projects.ts`
+- `/demos/azure-devops-pipeline`
+- `/demos/aiops-incident-lab`
+
+Metadata routes:
+
+- `/robots.txt` from `app/robots.ts`
+- `/sitemap.xml` from `app/sitemap.ts`
+
+## Resume and public assets
+
+- Resume file path: `public/Shivkumar_Resume_Azure Consultant.pdf`
+- Resume links resolve through `content/profile.ts` (`resumePath`).
+
+## Scope note
+
+This repository is a portfolio web application. No Azure infrastructure deployment is performed as part of the Vercel publish flow.
