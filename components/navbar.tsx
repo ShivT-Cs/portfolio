@@ -6,12 +6,13 @@ import { Menu, X } from "lucide-react";
 import { profile } from "@/content/profile";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#expertise", label: "Expertise" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#expertise", label: "Expertise" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/consultancy", label: "Consultancy" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -37,13 +38,13 @@ export function Navbar() {
 
         <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="rounded-md px-1 py-1 text-sm text-muted transition hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <a
             href={profile.resumePath}
@@ -71,13 +72,13 @@ export function Navbar() {
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="block rounded-md px-2 py-3 text-base text-muted transition hover:bg-white/5 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
