@@ -1,31 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { INQUIRY_SERVICE_OPTIONS } from "@/lib/inquiry-services";
+import { validateInquiry, type InquiryBody } from "@/lib/inquiry-validation";
+import { createInquiryRateLimiter, getInquiryRateLimitConfig } from "@/lib/inquiry-rate-limit";
 
-type InquiryBody = {
-  name?: string;
-  businessEmail?: string;
-  company?: string;
-  region?: string;
-  service?: string;
-  description?: string;
-  timeline?: string;
-  website?: string;
-};
-
-type RateLimitState = {
-  count: number;
-  resetAt: number;
-};
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
-const RATE_LIMIT_MAX_REQUESTS = 5;
-
-const rateLimitStore = new Map<string, RateLimitState>();
-
-function trimString(value: unknown): string {
-  return typeof value === "string" ? value.trim() : "";
-}
+const inquiryRateLimiter = createInquiryRateLimiter(getInquiryRateLimitConfig());
 
 function getClientIdentifier(request: NextRequest): string {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -39,83 +16,6 @@ function getClientIdentifier(request: NextRequest): string {
   }
 
   return "unknown";
-}
-
-function isRateLimited(identifier: string): boolean {
-  const now = Date.now();
-  const current = rateLimitStore.get(identifier);
-
-  if (!current || now > current.resetAt) {
-    rateLimitStore.set(identifier, {
-      count: 1,
-      resetAt: now + RATE_LIMIT_WINDOW_MS,
-    });
-    return false;
-  }
-
-  if (current.count >= RATE_LIMIT_MAX_REQUESTS) {
-    return true;
-  }
-
-  current.count += 1;
-  rateLimitStore.set(identifier, current);
-  return false;
-}
-
-function validate(body: InquiryBody) {
-  const name = trimString(body.name);
-  const businessEmail = trimString(body.businessEmail).toLowerCase();
-  const company = trimString(body.company);
-  const region = trimString(body.region);
-  const service = trimString(body.service);
-  const description = trimString(body.description);
-  const timeline = trimString(body.timeline);
-  const website = trimString(body.website);
-
-  if (website.length > 0) {
-    return { ok: false as const, reason: "invalid_submission" };
-  }
-
-  if (name.length < 2 || name.length > 80) {
-    return { ok: false as const, reason: "invalid_submission" };
-  }
-
-  if (!EMAIL_REGEX.test(businessEmail) || businessEmail.length > 254) {
-    return { ok: false as const, reason: "invalid_submission" };
-  }
-
-  if (company.length < 2 || company.length > 120) {
-    return { ok: false as const, reason: "invalid_submission" };
-  }
-
-  if (region.length < 2 || region.length > 80) {
-    return { ok: false as const, reason: "invalid_submission" };
-  }
-
-  if (!INQUIRY_SERVICE_OPTIONS.includes(service as (typeof INQUIRY_SERVICE_OPTIONS)[number])) {
-    return { ok: false as const, reason: "invalid_submission" };
-  }
-
-  if (description.length < 20 || description.length > 3000) {
-    return { ok: false as const, reason: "invalid_submission" };
-  }
-
-  if (timeline.length < 2 || timeline.length > 120) {
-    return { ok: false as const, reason: "invalid_submission" };
-  }
-
-  return {
-    ok: true as const,
-    payload: {
-      name,
-      businessEmail,
-      company,
-      region,
-      service,
-      description,
-      timeline,
-    },
-  };
 }
 
 async function sendInquiryEmail(payload: {
@@ -179,11 +79,14 @@ async function sendInquiryEmail(payload: {
 
 export async function POST(request: NextRequest) {
   try {
+    const isProduction = process.env.NODE_ENV === "production";
     const identifier = getClientIdentifier(request);
 
-    // This in-memory rate limiter reduces basic spam but is not globally reliable
+    // This in-memory limiter reduces basic spam but is not globally reliable
     // across multiple serverless instances or cold starts on Vercel.
-    if (isRateLimited(identifier)) {
+    // In development only, limit behavior can be relaxed via server environment
+    // variables to make local testing practical.
+    if (inquiryRateLimiter.isRateLimited(identifier)) {
       return NextResponse.json(
         {
           ok: false,
@@ -194,13 +97,20 @@ export async function POST(request: NextRequest) {
     }
 
     const body = (await request.json()) as InquiryBody;
-    const validated = validate(body);
+    const validated = validateInquiry(body);
 
     if (!validated.ok) {
+      // Field names are safe to log; values and inquiry contents are intentionally omitted.
+      console.warn("inquiry_validation_failed", {
+        reason: validated.reason,
+        invalidFields: validated.invalidFields,
+      });
+
       return NextResponse.json(
         {
           ok: false,
           message: "Please review the form details and try again.",
+          ...(isProduction ? {} : { reason: validated.reason, invalidFields: validated.invalidFields }),
         },
         { status: 400 },
       );

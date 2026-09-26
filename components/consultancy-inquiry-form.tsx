@@ -1,7 +1,8 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { INQUIRY_SERVICE_OPTIONS } from "@/lib/inquiry-services";
+import { INQUIRY_LIMITS } from "@/lib/inquiry-validation";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -50,7 +51,7 @@ export function ConsultancyInquiryForm() {
     }
   };
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (isSending) {
@@ -97,7 +98,8 @@ export function ConsultancyInquiryForm() {
           className="min-h-[44px] rounded-lg border border-white/15 bg-surface/60 px-3 py-2 text-ink"
           placeholder="Your name"
           required
-          maxLength={80}
+          minLength={INQUIRY_LIMITS.name.min}
+          maxLength={INQUIRY_LIMITS.name.max}
           value={payload.name}
           onChange={(event) => updateField("name", event.target.value)}
         />
@@ -112,7 +114,7 @@ export function ConsultancyInquiryForm() {
           className="min-h-[44px] rounded-lg border border-white/15 bg-surface/60 px-3 py-2 text-ink"
           placeholder="name@company.com"
           required
-          maxLength={254}
+          maxLength={INQUIRY_LIMITS.businessEmail.max}
           value={payload.businessEmail}
           onChange={(event) => updateField("businessEmail", event.target.value)}
         />
@@ -127,7 +129,8 @@ export function ConsultancyInquiryForm() {
           className="min-h-[44px] rounded-lg border border-white/15 bg-surface/60 px-3 py-2 text-ink"
           placeholder="Company name"
           required
-          maxLength={120}
+          minLength={INQUIRY_LIMITS.company.min}
+          maxLength={INQUIRY_LIMITS.company.max}
           value={payload.company}
           onChange={(event) => updateField("company", event.target.value)}
         />
@@ -142,7 +145,8 @@ export function ConsultancyInquiryForm() {
           className="min-h-[44px] rounded-lg border border-white/15 bg-surface/60 px-3 py-2 text-ink"
           placeholder="Country or region"
           required
-          maxLength={80}
+          minLength={INQUIRY_LIMITS.region.min}
+          maxLength={INQUIRY_LIMITS.region.max}
           value={payload.region}
           onChange={(event) => updateField("region", event.target.value)}
         />
@@ -176,7 +180,8 @@ export function ConsultancyInquiryForm() {
           className="rounded-lg border border-white/15 bg-surface/60 px-3 py-2 text-ink"
           placeholder="Business context, current setup, and what you want to achieve"
           required
-          maxLength={3000}
+          minLength={INQUIRY_LIMITS.description.min}
+          maxLength={INQUIRY_LIMITS.description.max}
           value={payload.description}
           onChange={(event) => updateField("description", event.target.value)}
         />
@@ -190,7 +195,8 @@ export function ConsultancyInquiryForm() {
           className="min-h-[44px] rounded-lg border border-white/15 bg-surface/60 px-3 py-2 text-ink"
           placeholder="Example: Discovery this month, implementation next quarter"
           required
-          maxLength={120}
+          minLength={INQUIRY_LIMITS.timeline.min}
+          maxLength={INQUIRY_LIMITS.timeline.max}
           value={payload.timeline}
           onChange={(event) => updateField("timeline", event.target.value)}
         />
@@ -198,7 +204,7 @@ export function ConsultancyInquiryForm() {
 
       <div className="hidden" aria-hidden="true">
         <label>
-          Website
+          <span>Website</span>
           <input
             name="website"
             type="text"
@@ -220,12 +226,12 @@ export function ConsultancyInquiryForm() {
         </button>
 
         {message ? (
-          <p
-            className={`mt-3 text-xs ${status === "success" ? "text-emerald-200" : "text-amber-100"}`}
-            role={status === "error" ? "alert" : "status"}
+          <output
+            className={`mt-3 block text-xs ${status === "success" ? "text-emerald-200" : "text-amber-100"}`}
+            aria-live={status === "error" ? "assertive" : "polite"}
           >
             {message}
-          </p>
+          </output>
         ) : null}
 
         <p id="inquiry-note" className="mt-3 text-xs text-muted">
