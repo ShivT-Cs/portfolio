@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    linear-gradient(180deg, rgba(8, 12, 24, 0.95) 0%, rgba(5, 8, 16, 1) 46%, rgba(3, 6, 13, 1) 100%),
+    radial-gradient(circle at 5% 10%, rgba(47, 133, 255, 0.2), transparent 34%),
+    radial-gradient(circle at 95% 25%, rgba(27, 80, 169, 0.2), transparent 38%),
+    #06080f;
+  color: #f4f7ff;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #5ca4ff;
+  outline-offset: 2px;
+}
+
+main {
+  position: relative;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+}
+
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(98, 169, 255, 0.45), transparent);
+  margin-bottom: 2.25rem;
+}
+
+.topology-canvas {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.9rem;
+  min-height: 132px;
+  background:
+    radial-gradient(circle at 78% 24%, rgba(92, 164, 255, 0.2), transparent 42%),
+    rgba(17, 24, 42, 0.55);
+  overflow: hidden;
+}
+
+.topology-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.topology-lines path {
+  stroke: rgba(112, 180, 255, 0.62);
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 3 4;
+  animation: flow 8s linear infinite;
+}
+
+.topology-node {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #7fc1ff;
+  box-shadow: 0 0 0 7px rgba(127, 193, 255, 0.08);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.topology-node-a {
+  top: 71%;
+  left: 10%;
+}
+
+.topology-node-b {
+  top: 42%;
+  left: 34%;
+  animation-delay: 0.3s;
+}
+
+.topology-node-c {
+  top: 58%;
+  left: 58%;
+  animation-delay: 0.65s;
+}
+
+.topology-node-d {
+  top: 32%;
+  left: 73%;
+  animation-delay: 0.95s;
+}
+
+.topology-node-e {
+  top: 55%;
+  left: 88%;
+  animation-delay: 1.2s;
+}
+
+.flow-line {
+  animation: flow 7s linear infinite;
+}
+
+.pulse-node {
+  animation: pulse 2.3s ease-in-out infinite;
+}
+
+@keyframes flow {
+  from {
+    stroke-dashoffset: 80;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .topology-lines path,
+  .topology-node,
+  .flow-line,
+  .pulse-node {
+    animation: none;
+  }
+}

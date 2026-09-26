@@ -1,0 +1,47 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sanitized Azure landing zone architecture diagram">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#141d34"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7ac7ff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#3d88ff" stop-opacity="0.45"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="520" fill="url(#bg)" rx="18"/>
+
+  <text x="40" y="50" fill="#dce8ff" font-size="28" font-family="Segoe UI, sans-serif">Sanitized Landing Zone / IaC Demonstration</text>
+  <text x="40" y="78" fill="#94a9ce" font-size="16" font-family="Segoe UI, sans-serif">Reference topology only. No subscription, tenant, or customer identifiers.</text>
+
+  <g fill="none" stroke="url(#line)" stroke-width="3" stroke-dasharray="7 7">
+    <path d="M205 170 H355"/>
+    <path d="M445 170 H595"/>
+    <path d="M685 170 H845"/>
+    <path d="M685 170 V330 H845"/>
+    <path d="M925 170 V330 H1050"/>
+  </g>
+
+  <g font-family="Segoe UI, sans-serif">
+    <rect x="70" y="130" width="140" height="80" rx="12" fill="#16213d" stroke="#5f87c9"/>
+    <text x="87" y="173" fill="#e7f1ff" font-size="16">Mgmt Groups</text>
+
+    <rect x="305" y="130" width="140" height="80" rx="12" fill="#16213d" stroke="#5f87c9"/>
+    <text x="338" y="173" fill="#e7f1ff" font-size="16">Policy</text>
+
+    <rect x="545" y="130" width="140" height="80" rx="12" fill="#16213d" stroke="#5f87c9"/>
+    <text x="566" y="173" fill="#e7f1ff" font-size="16">Networking</text>
+
+    <rect x="845" y="130" width="160" height="80" rx="12" fill="#16213d" stroke="#5f87c9"/>
+    <text x="866" y="173" fill="#e7f1ff" font-size="16">Workload RGs</text>
+
+    <rect x="845" y="290" width="160" height="80" rx="12" fill="#16213d" stroke="#5f87c9"/>
+    <text x="872" y="333" fill="#e7f1ff" font-size="16">Key Vault</text>
+
+    <rect x="1050" y="290" width="120" height="80" rx="12" fill="#16213d" stroke="#5f87c9"/>
+    <text x="1064" y="333" fill="#e7f1ff" font-size="16">Telemetry</text>
+  </g>
+
+  <text x="40" y="470" fill="#95a7c8" font-size="14" font-family="Segoe UI, sans-serif">Security baseline: NSG deny inbound internet, Key Vault RBAC enabled, Key Vault network ACL default deny.</text>
+</svg>

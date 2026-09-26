@@ -1,0 +1,48 @@
+name: landing-zone-iac-checks
+
+on:
+  pull_request:
+    paths:
+      - "infrastructure/landing-zone/**"
+      - ".github/workflows/landing-zone-iac-checks.yml"
+  push:
+    branches: [main]
+    paths:
+      - "infrastructure/landing-zone/**"
+      - ".github/workflows/landing-zone-iac-checks.yml"
+
+jobs:
+  terraform-checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infrastructure/landing-zone
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.8
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init (no backend)
+        run: terraform init -backend=false -input=false
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan (no apply)
+        run: terraform plan -input=false -lock=false -var-file=terraform.tfvars.example -out=tfplan
+
+      - name: Terraform Security Scan
+        uses: aquasecurity/tfsec-action@v1.0.3
+        with:
+          working_directory: infrastructure/landing-zone
+
+      - name: Cleanup Plan Artifact
+        run: rm -f tfplan

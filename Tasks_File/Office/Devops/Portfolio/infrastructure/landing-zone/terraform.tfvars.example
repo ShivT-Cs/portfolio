@@ -1,0 +1,40 @@
+project_name = "landingzone"
+environment  = "demo"
+location     = "westeurope"
+
+resource_groups = {
+  hub = {
+    location = "westeurope"
+    tags = {
+      tier = "platform"
+    }
+  }
+  workload = {
+    location = "westeurope"
+    tags = {
+      tier = "workload"
+    }
+  }
+}
+
+network_resource_group_key = "hub"
+
+network = {
+  vnet_name     = "core"
+  address_space = ["10.60.0.0/16"]
+  subnets = {
+    platform = {
+      address_prefix = "10.60.1.0/24"
+    }
+    workload = {
+      address_prefix = "10.60.2.0/24"
+    }
+  }
+}
+
+key_vault_name_prefix = "lzvault"
+
+tags = {
+  owner   = "platform-team"
+  purpose = "sanitized-demo"
+}
