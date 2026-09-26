@@ -1,0 +1,72 @@
+flowchart TB
+  visitor[Visitor Browser]
+
+  subgraph vercel[Vercel Hosted Next.js App]
+    appRouter[Next.js App Router]
+
+    subgraph pages[Pages and Routes]
+      home[/ /]
+      consultancy[/consultancy]
+      demoPipeline[/demos/azure-devops-pipeline]
+      demoAiops[/demos/aiops-incident-lab]
+      projectDetail[/projects/[slug]/]
+      robots[/robots.txt]
+      sitemap[/sitemap.xml]
+    end
+
+    subgraph ui[Client UI Components]
+      navbar[Navbar]
+      inquiryForm[ConsultancyInquiryForm]
+      motion[MotionWrapper]
+      demos[Demos and Simulators]
+    end
+
+    subgraph dataModules[Data and Domain Modules]
+      contentData[content/* static content]
+      inquiryValidation[inquiry-validation]
+      inquiryRateLimit[inquiry-rate-limit]
+      inquiryServices[inquiry-services]
+      siteUrl[site-url]
+    end
+
+    subgraph api[Server API]
+      inquiryApi[/api/inquiry POST]
+    end
+  end
+
+  subgraph integrations[External Integration]
+    resend[Resend Email API]
+  end
+
+  subgraph tests[Automated Tests]
+    nodeTests[node:test suite]
+  end
+
+  visitor --> home
+  visitor --> consultancy
+  visitor --> demoPipeline
+  visitor --> demoAiops
+  visitor --> projectDetail
+
+  appRouter --> pages
+  home --> navbar
+  home --> contentData
+  consultancy --> inquiryForm
+  consultancy --> contentData
+  inquiryForm --> inquiryApi
+
+  inquiryApi --> inquiryValidation
+  inquiryApi --> inquiryRateLimit
+  inquiryValidation --> inquiryServices
+  inquiryApi --> resend
+
+  robots --> siteUrl
+  sitemap --> siteUrl
+  sitemap --> contentData
+
+  demos --> dataModules
+  nodeTests --> dataModules
+  nodeTests --> api
+
+  classDef external fill:#2d1730,stroke:#b794f4,color:#f8f7ff;
+  class resend external;
